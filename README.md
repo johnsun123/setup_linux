@@ -63,11 +63,7 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ---
 # java
 ```
-  sudo apt-get install openjdk-8-jdk -y
-  echo 'export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-arm64"' >> /etc/profile
-  echo 'export PATH=$JAVA_HOME/bin:$PATH' >> /etc/profile
-  echo 'export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar' >> /etc/profile
-  source /etc/profile
+  sudo apt-get install openjdk-11-jdk -y
 ```
 
 ---
@@ -299,6 +295,11 @@ docker run -di --name mongodb --privileged --restart always -p 27017:27017 \
 -v /software/mongodb/log:/data/log \
 mongo
 ```
+
+## docker安装code-server
+```
+docker run -d --name coder-server -p 28080:8080 -e PASSWORD=123 --restart always codercom/code-server:latest
+```
 ---
 ## 一键安装命令
 
@@ -326,6 +327,7 @@ wget https://gitee.com/hahaju/setup_linux/raw/master/setup.sh && chmod 755 setup
 - [x] ddns-go(docker)
 - [x] cloudreve(docker)
 - [x] portainer(docker)
+- [x] code-server(docker)
 
 ### 精简版：
 

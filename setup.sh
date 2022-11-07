@@ -12,11 +12,7 @@ install_pip() {
 }
 
 install_java() {
-  sudo apt-get install openjdk-8-jdk -y
-  echo 'export JAVA_HOME="/usr/lib/jvm/java-8-openjdk-arm64"' >> /etc/profile
-  echo 'export PATH=$JAVA_HOME/bin:$PATH' >> /etc/profile
-  echo 'export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar' >> /etc/profile
-  source /etc/profile
+  sudo apt-get install openjdk-11-jdk -y
 }
 
 install_tomcat() {
@@ -45,6 +41,7 @@ install_docker_others() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v portainer_data:/data \
     portainer/portainer-ce:latest
+  docker run -d --name coder-server -p 28080:8080 -e PASSWORD=123 --restart always codercom/code-server:latest
 }
 install_docker_compose() {
   update

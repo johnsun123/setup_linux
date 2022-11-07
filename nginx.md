@@ -94,3 +94,19 @@ server {
     rewrite ^(.*)$ https://domain.name:443; #将所有HTTP请求通过rewrite指令重定向到HTTPS。
 }
 ```
+---
+## code-server部署
+```
+server {
+    listen 80;
+    server_name code.javagood.top;
+
+    location / {
+        proxy_pass http://localhost:28080;
+proxy_set_header Host $host;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection upgrade;
+        proxy_set_header Accept-Encoding gzip;
+    }
+}
+```
